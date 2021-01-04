@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classification</title>
+    <link rel="stylesheet" href="../static/css/app.css">
+    <!-- --------------------------------------------------------- -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    <!-- --------------------------------------------------------- -->
+
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="60">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="banner">
+      <div class="container">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#"><span>Image</span>Classification</a>
+      
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li> 
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="banner">
+        <div class="container">
+        <div class="banner-text">
+        <div class="banner-heading">
+        Glad to see you here !
+        </div>
+        <div class="banner-sub-heading">
+        Here goes the Flower Image Classification on 5 Categories
+        </div>
+        <!-- <button type="button" href='#classifier' class="btn btn-warning text-dark btn-banner">Get started</button> -->
+        <a class="btn btn-warning text-dark btn-banner" href="#classifier">Get started</a>
+        </div>
+        </div>
+    </div>
+    <section id="classifier">
+        <div class="container-fluid mgh" style="height: 90px;" >
+        </div>
+        <div class="container">
+            <div class="text-intro">
+              <h2 class="head2">flower Image classifier</h2>
+              <div class="row">
+
+                <div class="col">
+                  <div class="card">
+                    <div class="card-body">
+                      <img class="avtar" src="../static/images/bougainvillea.jpg" alt="Card image cap">
+                      <h4 class="card-title">bougainvillea</h4>                  
+                    </div>                
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="card">
+                    
+                    <div class="card-body">
+                      <img class="avtar" src="../static/images/garden_roses.jpg" alt="Card image cap">
+                      <h4 class="card-title">garden_rose</h4>                  
+                    </div>                
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    
+                    <div class="card-body">
+                      <img class="avtar" src="../static/images/gardenias.jpg" alt="Card image cap">
+                      <h4 class="card-title">gardenias</h4>                  
+                    </div>                
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    
+                    <div class="card-body">
+                      <img class="avtar" src="../static/images/hibiscus.jpg" alt="Card image cap">
+                      <h4 class="card-title">hibiscus</h4>                  
+                    </div>                
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    
+                    <div class="card-body">
+                      <img class="avtar" src="../static/images/hydrangeas.jpg" alt="Card image cap">
+                      <h4 class="card-title">hydrangeas</h4>                  
+                    </div>                
+                  </div>
+                </div>
+              </div>
+              <br>
+              <br>
+              <div class="row">
+                <div class="col-sm-4">
+
+                  <form action="/classify_image" method="POST" enctype="multipart/form-data">
+                    <div class="image-upload">
+                      <label for="file-input">
+                        
+                        <img id="blah" width="50vw" height="50vw"/>
+                        <img src="../static/images/upload.png" width="50vw" height="80vw" /><br>
+                        <br>
+                        <span class="note needsclick">Click to Upload Image Here</span>
+                      </label>                    
+                      <input id="file-input" name="image" type="file" onchange="readURL(this);"/>
+                    </div>
+                    <div class="dz-message needsclick">
+                        <button class="bt1" type="submit" action='classify_image'>Classify</button>
+                    </div>
+                </form>
+
+                </div>
+                
+                {% if st %}
+                  <div class="col-sm-4">
+                    <div>
+                    </div>
+                    <div class="card">                    
+                      <div class="card-body">
+                        <!-- <img class="avtar" src="../{{im}}" alt="Card image cap"> -->
+                        <img src="{{ url_for('static', filename='/'.join(['upload', im])) }}" class="avtar" />
+                        <h4 class="card-title">{{result}}</h4>  
+                       
+
+                                       
+                      </div>                
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <table id="classTable">
+                      <thead>
+                       <tr>
+                        <th>Predict Classes</th>
+                        <th>Probability Score[%]</th>
+                       </tr>
+                      </thead>
+                      <tbody>                        
+                        <tr>
+                          <td>{{clas[0]}}</td>
+                          <td>{{pr[0][0]}}</td>
+                        </tr>
+                        <tr>
+                          <td>{{clas[1]}}</td>
+                          <td>{{pr[0][1]}}</td>
+                        </tr>
+                        <tr>
+                          <td>{{clas[2]}}</td>
+                          <td>{{pr[0][2]}}</td>
+                        </tr>
+                        <tr>
+                          <td>{{clas[3]}}</td>
+                          <td>{{pr[0][3]}}</td>
+                        </tr>
+                        <tr>
+                          <td>{{clas[4]}}</td>
+                          <td>{{pr[0][4]}}</td>
+                        </tr>
+                        <tr class="b1">
+                          <td>{{clas[5]}}</td>
+                          <td>{{pr[0][5]}}</td>
+                        </tr>
+                        
+                        
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                {% endif %}
+                {% if st1 %}
+                <div class="col-sm-8 error">
+                 <p>Can't classify Image. Classifier was not able to detect Image properly</p>
+                </div>
+                {% endif %}
+              </div>
+        </div>
+      </div>
+        
+    </section>
+
+    <section id="about">
+    <div class="container">
+        <div class="text-intro">
+        <h2>About Us</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+        </div>
+    </div>
+    </section>
+
+
+    <!-- ------------------------------------------------------------ -->
+    <script src="../static/js/app.js"></script>
+    <!-- ------------------------------------------------------------ -->
+</body>
+</html>

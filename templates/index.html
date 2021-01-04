@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classification</title>
+    <link rel="stylesheet" href="../static/css/app.css">
+    <!-- --------------------------------------------------------- -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    <!-- --------------------------------------------------------- -->
+
+</head>
+<!-- __________________ BODY Start _______________________________________ -->
+
+<body data-spy="scroll" data-target=".navbar" data-offset="60">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="banner">
+      <div class="container">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#"><span>Image</span>Classification</a>
+      
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li> 
+            <li class="nav-item">
+              <a class="nav-link" href="#classifier">Classification</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- ___________________ Banner Start ______________________________ -->
+    <div class="banner">
+        <div class="container">
+        <div class="banner-text">
+        <div class="banner-heading">
+        Glad to see you here !
+        </div>
+        <div class="banner-sub-heading">
+        Here we goes for the Image Classification
+        </div>
+        <!-- <button type="button" href='#classifier' class="btn btn-warning text-dark btn-banner">Get started</button> -->
+        <a class="btn btn-warning text-light btn-banner" href="#classifier">Get Started Classification</a>
+        </div>
+        </div>
+    </div>
+   <!--___________________ Banner End __________________________________  -->
+    
+  <!-- _________________________ Classifier Start _____________________ -->
+
+  <section id="classifier">
+    <div class="container-fluid mgh" style="height: 90px;" ></div>
+    <div class="container mt-5">
+      <div class="title rw">
+        <h3>Upload & Classify Images on Diffrent Categories</h3>
+        <hr>
+      </div>
+      <div class="title rw1">
+          <h4><small>Select Images Categories & predict images</small></h4>
+      </div>
+      <div class="row rw2">
+          <div class="col-md-12 tb">
+              <p><b>Please Select Category</b></p>
+              <ul class="nav nav-pills" role="tablist">
+                  <!--
+                      color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
+                  -->
+                  <li class="nav-item cl1">
+                      <a class="nav-link active" href="#nature" role="tab" data-toggle="tab">
+                        Nature Images Predictions
+                      </a>
+                  </li>
+                  
+                  <li class="nav-item cl1">
+                      <a class="nav-link" href="#dog_cat" role="tab" data-toggle="tab">Cat & Dog Images Predictions</a>
+                  </li>
+              </ul>
+              <hr>
+              <br>
+              <div class="tab-content tab-space">
+                  <div class="tab-pane active" id="nature">
+                    <form action="/classify_image" method="POST" enctype="multipart/form-data">
+                      <!-- <input id="file-input" name="image" type="file" onchange="readURL(this);"/> -->
+              
+                      <div class="container tab">
+                        <input type="file" name="image" id="">
+                        <button class="bt1" type="submit" action='classify_image'>Classify</button>
+                      </div>
+                    </form>
+                  </div>
+                  
+                  <div class="tab-pane" id="dog_cat">
+                    <form action="/classify_image1" method="POST" enctype="multipart/form-data">
+                      <!-- <input id="file-input" name="image" type="file" onchange="readURL(this);"/> -->
+              
+                      <div class="container tab">
+                        <input type="file" name="image1" id="">
+                        <button class="bt1" type="submit" action='classify_image1'>Classify</button>
+                      </div>
+                    </form>
+                  </div>
+                  <br>
+                  <hr>
+              </div>
+              <div class="container">
+                <div class="row">
+                  {% if st %}
+                    <div class="col-md-6">
+                      <div>
+                      </div>
+                      <div class="card">                    
+                        <div class="card-body">
+                          <!-- <img class="avtar" src="../{{im}}" alt="Card image cap"> -->
+                          <p id="re">Image</p>
+                          <img src="{{ url_for('static', filename='/'.join(['upload', im])) }}" class="avtar" />
+                          <p class="card-title" id="re"> Result : {{result}}</p> 
+
+                        </div>                
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <table id="classTable">
+                        <thead>
+                         <tr>
+                          <th colspan="2">Predict Classes Probability Score[%]</th>
+                         </tr>
+                        </thead>
+                        <tbody>                        
+                          <tr>
+                            <td>{{clas[0]}}</td>
+                            <td>{{pr[0][0]}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{clas[1]}}</td>
+                            <td>{{pr[0][1]}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{clas[2]}}</td>
+                            <td>{{pr[0][2]}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{clas[3]}}</td>
+                            <td>{{pr[0][3]}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{clas[4]}}</td>
+                            <td>{{pr[0][4]}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{clas[5]}}</td>
+                            <td>{{pr[0][5]}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  {% endif %}
+                </div>
+
+                <div class="row">
+                  {% if st1 %}
+                    <div class="col-sm-12">
+                      <div>
+                      </div>
+                      <div class="card">                    
+                        <div class="card-body">
+                          <!-- <img class="avtar" src="../{{im}}" alt="Card image cap"> -->
+                          <p id="re">Image</p>
+                          <img src="{{ url_for('static', filename='/'.join(['upload', im])) }}" class="avtar" />
+                          <p class="card-title" id="re"> Predicted Result : {{result}}</p> 
+
+                        </div>                
+                      </div>
+                    </div>
+                   
+                  {% endif %}
+                </div>
+              </div>
+          </div>
+      </div>
+  </section>
+<!-- _________________________________ Classifier Ends __________________________________ -->
+
+<!--_____________________________________________________________________________________ -->
+
+
+<!-- _________________________________________________________________________________________ -->
+
+  <section id="about2">
+  <div class="container" style="height: 300px;">
+      <div class="text-intro">
+      <h2>About Us</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+      </div>
+  </div>
+  </section>
+
+    <!-- ------------------------------------------------------------ -->
+    <script src="../static/js/app.js"></script>
+    <!-- ------------------------------------------------------------ -->
+</body>
+</html>

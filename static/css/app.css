@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css?family=Gothic+A1|Kaushan+Script|Libre+Baskerville|Lobster');
+.body{
+	font-family: 'Gothic A1', sans-serif;
+	font-size:16px;
+	}
+	p{
+	color:#6c6c6f;
+	font-size:1em;
+	}
+	h1,h2,h3,h4,h5,h6{color:#323233;text-transform:uppercase;}
+.navbar-brand  span{
+	color: #fed136;
+	font-size:25px;font-weight:700;letter-spacing:0.1em;
+    font-family: 'Kaushan Script','Helvetica Neue',Helvetica,Arial,cursive;
+}
+.navbar-brand {
+	color: #fff;
+	font-size:25px;
+    font-family: 'Kaushan Script','Helvetica Neue',Helvetica,Arial,cursive;
+	font-weight:700;
+	letter-spacing:0.1em;
+}
+
+.navbar-nav .nav-item .nav-link{
+	color: #fff !important;
+	padding: 1.1em 1em!important;
+	font-size: 120%;
+    font-weight: 500;
+    letter-spacing: 1px;
+   font-family: 'Gothic A1', sans-serif;
+}
+.navbar-nav .nav-item .nav-link:hover{color:#fed136 !important;}
+/* .navbar-expand-md .navbar-nav .dropdown-menu{
+	border-top:3px solid #fed136;
+} */
+/* .dropdown-item:hover{background-color:#fed136;color:#fff;}
+nav{-webkit-transition: padding-top .3s,padding-bottom .3s;
+    -moz-transition: padding-top .3s,padding-bottom .3s;
+    transition: padding-top .3s,padding-bottom .3s;
+    border: none;
+	} */
+	
+ .shrink {
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: #212529;
+}
+.banner{
+	/* background-image:url('http://www.hd-freewallpapers.com/latest-wallpapers/abstract-website-backgrounds.jpg'); */
+	background-image: url('../images/head/header9.jpg');
+	text-align: center;
+    color: #fff;
+   
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.banner-text{
+	padding:200px 0 150px 0;
+}
+.banner-heading{
+	font-family: 'Lobster', cursive;
+	font-size: 75px;
+    font-weight: 700;
+    line-height: 100px;
+    margin-bottom: 30px;
+	color:#fff;
+}
+.banner-sub-heading{
+	font-family: 'Libre Baskerville', serif;
+	font-size: 30px;
+    font-weight: 300;
+    line-height: 30px;
+    margin-bottom: 50px;
+	color:#fff;
+}
+
+.btn-banner{
+	padding:5px 20px;
+	border-radius:10px;
+	font-weight:700;
+	line-height:1.5;
+	text-align:center;
+	color:#fff;
+	text-transform:uppercase;
+}
+.text-intro{
+	width:90%;
+	margin:auto;
+	text-align:center;
+	/* padding-top:90px; */
+}
+
+
+/* mobile view */
+@media (max-width:500px)
+{
+	.navbar-nav{
+		background-color:#000;
+		border-top:3px solid #fed136;
+		color:#fff;
+		z-index:1;
+		margin-top:5px;
+		}
+	.navbar-nav .nav-item .nav-link{
+	padding: 0.7em 1em!important;
+	font-size: 100%;
+    font-weight: 500;
+    }
+	.banner-text{
+	padding:150px 0 150px 0;
+}
+.banner-heading{
+	font-size: 30px;
+    line-height: 30px;
+    margin-bottom: 20px;
+}
+.banner-sub-heading{
+	font-size: 10px;
+    font-weight: 200;
+    line-height: 10px;
+    margin-bottom: 40px;
+}
+
+}
+
+@media (max-width:768px){
+	.banner-text{
+	padding:150px 0 150px 0;
+}
+	.banner-sub-heading{
+	font-size: 23px;
+    font-weight: 200;
+    line-height: 23px;
+    margin-bottom: 40px;
+}
+}
+.avtar{
+	width: 40%;
+    height: 190px;
+    border-radius: 2%;
+    margin: 0 30%;
+}
+.card{
+	border:none !important;
+}
+.card-body{
+	padding: 5px !important;
+}
+.card-title{
+	margin-top: 20px;
+}
+.head2{
+	padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    background: lightcyan;
+	color: darkred;
+	font-family: 'Kaushan Script';
+}
+.image-upload{
+	border: 1.5px dashed;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.image-upload>input {
+	display: none;
+  }
+
+#classTable {
+font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+border-collapse: collapse;
+width: 100%;
+}
+
+#classTable td, #classTable th {
+border: 1px solid #ddd;
+padding: 8px;
+text-transform: capitalize;
+}
+
+#classTable th {
+padding-top: 10px;
+padding-bottom: 12px;
+text-align: left;
+/* background-color: cornflowerblue;
+color: white; */
+}
+
+.bt1{
+	background: cornflowerblue;
+	color: white;
+	width: 150px;
+    height: 35px;
+    border: 2px solid cornflowerblue;
+}
+.bt1:hover{
+	background: transparent;
+    border: 2px solid cornflowerblue;
+	color: darkblue;
+}
+
+.error p {
+	font-family: MerriweatherRegular;
+	font-size: 30px;
+	line-height: initial;
+	color: blue;
+	text-align: center;
+	padding-top: 25px;
+  }
+
+.mgh{
+	background: url('../images/head/header10.jpg');
+	/* background-color: #050500; */
+	background-repeat: no-repeat;
+	background-size: 100%  90px;
+}
+
+a.btn.btn-warning.text-light.btn-banner:hover {
+    color: blue !important;
+}
+
+li.cl1{
+	width: 50%;
+}
+
+.tab{
+	width: 60% !important;
+	margin: 0 20%;
+}
+.tb{
+	/* background: orange; */
+	width: 80% !important;
+}
+.rw{
+	margin: 0% 5% !important;
+	width: 90%;
+	text-align: center;
+}
+.rw1{
+	margin: 0% 5% !important;
+	width: 90%;
+	text-align: center;
+}
+.rw2{
+	margin: 0% 10% !important;
+	width: 80%;
+	border: 2px solid green;
+	padding: 10px;
+}
+#re{
+	padding: 10px;
+    text-align: left;
+    font-weight: 700;
+    margin-top: -4px;
+    text-align: center;
+    color: black;
+    font-size: 18px;
+	}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+	color: #fff;
+	background-color: cornflowerblue;
+}
