@@ -10,4 +10,7 @@ workflows:
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - app/run
+      - welcome/run
+  steps:
+      - checkout
+      - run: pip install -r requirements/dev.txt
