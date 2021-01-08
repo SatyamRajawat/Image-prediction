@@ -10,7 +10,10 @@ workflows:
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - welcome/run
-  steps:
-      - checkout
-      - run: pip install -r requirements/dev.txt
+      build:
+        working_directory: ~/circleci-python
+        docker:
+          - image: "circleci/python:3.8.5"
+        steps:
+          - checkout
+          - run: python3 app.py
